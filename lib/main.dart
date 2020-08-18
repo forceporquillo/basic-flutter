@@ -20,7 +20,7 @@ class GradientButton extends StatefulWidget {
 class _GradientButtonState extends State<GradientButton>
     with SingleTickerProviderStateMixin {
   double _scale = 35.0;
-
+  int _clicked = 0;
   AnimationController _controller;
 
   @override
@@ -33,18 +33,19 @@ class _GradientButtonState extends State<GradientButton>
       upperBound: 0.2,
     )..addListener(() {
         setState(() {
-          _showToast(title: "SpaceX");
+          _showToast(title: "Button is clicked ");
         });
       });
   }
 
   void _showToast({String title}) {
+    _clicked++;
     Fluttertoast.showToast(
-      msg: title,
+      msg: title + _clicked.toString(),
       toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.CENTER,
-      backgroundColor: Color(0xFFe74c3c),
-      textColor: Color(0xFFFFFFFF)
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Color(0x0000000),
+      textColor: Color(0xFF4B90EB)
     );
   }
 
@@ -78,7 +79,7 @@ class _GradientButtonState extends State<GradientButton>
         borderRadius: BorderRadius.circular(1000),
         boxShadow: [
           BoxShadow(
-              color: Color(0xFFFF512F).withOpacity(0.35),
+              color: Color(0xFF4B90EB).withOpacity(0.35),
               offset: Offset(0.0, 22.0),
               blurRadius: 44.0,
               spreadRadius: -12.0),
